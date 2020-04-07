@@ -1,0 +1,17 @@
+<cdk-virtual-scroll-viewport itemSize="97">
+  <fck-expandable-list-item *cdkVirtualFor="let task of tasks" matRipple
+                            (click)="onOpenTask(task)"
+                            (deleteClicked)="onTaskDelete(task)"
+                            [isExpandable]="false"
+                            [itemStatusType]="getColorByStatus(task.status.status)"
+                            [isDeletable]="task.canDelete"
+                            [warning]="!!task.estimationDate"
+                            [ngClass]="{'last-estimated-task': isLastEstimatedTask(task)}">
+    <div fckExpandableListItemType>{{task.type.description}}</div>
+    <div fckExpandableListItemNumber>{{task.id}}</div>
+    <div *ngIf='task.estimationDate' fckExpandableListItemWarningMessage class="due-time">Выполнить до {{task.estimationDate | date: 'dd MMMM yyyy, HH:mm'}}</div>
+    <fck-property *ngIf="task.creationDate" name="Создана" [value]="task.creationDate | date:'dd.MM.yyy HH:mm:ss'"></fck-property>
+    <fck-property *ngIf="task.status.description" name="Статус" [value]="task.status.description"></fck-property>
+    <fck-property *ngIf="task.employeeFullName" name="Исполнитель" [value]="task.employeeFullName"></fck-property>
+  </fck-expandable-list-item>
+</cdk-virtual-scroll-viewport>

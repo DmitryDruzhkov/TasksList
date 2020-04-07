@@ -17,7 +17,16 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "receiving": [
+        "dist/receiving/receiving",
+        "dist/receiving"
+      ],
+      "@myApp/tasks": [
+        "projects/tasks/src/index.ts",
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

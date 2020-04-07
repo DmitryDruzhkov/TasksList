@@ -1,0 +1,27 @@
+<mat-sidenav-container>
+  <mat-sidenav
+    position="end"
+    mode="over"
+    [fixedInViewport]="true"
+    [fixedTopGap]="(isMobile | async)? ToolbarHeight.MOBILE : ToolbarHeight.DESKTOP"
+    #drawer>
+    <sew-filters
+      [filters]="filters.getFilters()"
+      (resetFilters)="resetFilters()"
+      (applyFilters)="applyFilters()">
+    </sew-filters>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <tasks-list *ngIf="!(isMobile | async) else mobileView"
+                [data]="tasks | async"
+                (openTask)="openTask($event)"
+                (deleteTask)="deleteTask($event)">
+    </tasks-list>
+    <ng-template #mobileView>
+      <tasks-list-mobile  [data]="tasks | async"
+                          (openTask)="openTask($event)"
+                          (deleteTask)="deleteTask($event)">
+      </tasks-list-mobile>
+    </ng-template>
+  </mat-sidenav-content>
+</mat-sidenav-container>

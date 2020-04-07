@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  height: 100%;
+  background: #f2f2f2;
+  
+  cdk-virtual-scroll-viewport {
+    flex-grow: 1;
+  }
+}
+.task {
+  margin: 8px;
+  width: 100%;
+}
+
+.due-time {
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  margin-top: 2px;
+}
+
+.last-estimated-task {
+  margin-bottom: 24px;
+}
